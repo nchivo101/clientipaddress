@@ -1,8 +1,11 @@
 var express = require('express');
 var app = express();
 
+var obj = {"IP Adress" : null};
+
 app.get("/", function(req,res) {
-    res.send("Hi There");
+    obj["IP Adress"] = req.ip;
+    res.send(obj);
 });
 
 app.set("port",process.env.PORT || 5000);
