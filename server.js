@@ -4,7 +4,7 @@ var app = express();
 var obj = {"IP Adress" : null};
 
 app.get("/", function(req,res) {
-    obj["IP Adress"] = req.ip;
+    obj["IP Adress"] = req.header('x-forwarded-for') || req.connection.remoteAddress;
     res.send(obj);
 });
 
